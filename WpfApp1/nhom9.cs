@@ -8,5 +8,6 @@ namespace SalesManagementApp
 {
     internal class nhom9
     {
+
     }
 }
