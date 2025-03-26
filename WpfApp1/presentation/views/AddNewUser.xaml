@@ -1,0 +1,93 @@
+﻿<Page x:Class="SalesManagementApp.presentation.views.AddNewUser"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="AddNewUser">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- Tiêu đề -->
+            <TextBlock Grid.Row="0" Text="Thêm Người Dùng"
+                       FontSize="24" FontWeight="Bold"
+                       HorizontalAlignment="Center" Margin="0,0,0,20"/>
+
+            <!-- Nội dung chia 2 cột -->
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <!-- Cột bên trái -->
+                <StackPanel Grid.Column="0" Margin="10">
+                     
+
+                    <TextBlock Text="Họ và Tên" FontWeight="Bold"/>
+                    <TextBox Text="{Binding FullName}" Margin="0,5"/>
+
+                    <TextBlock Text="Tên đăng nhập" FontWeight="Bold"/>
+                    <TextBox Text="{Binding Username}" Margin="0,5"/>
+
+                    <TextBlock Text="Giới tính" FontWeight="Bold"/>
+                    <ComboBox ItemsSource="{Binding Genders}" SelectedItem="{Binding Gender}" Margin="0,5"/>
+                    <TextBlock Text="Ngày sinh" FontWeight="Bold"/>
+                    <DatePicker SelectedDate="{Binding Birthday}"
+            FontSize="14"
+            Height="35"
+            VerticalContentAlignment="Center"
+            Margin="0,5">
+                        <DatePicker.CalendarStyle>
+                            <Style TargetType="Calendar">
+                                <Setter Property="FontSize" Value="16"/>
+                            </Style>
+                        </DatePicker.CalendarStyle>
+                    </DatePicker>
+
+                    <TextBlock Text="Số điện thoại" FontWeight="Bold"/>
+                    <TextBox Text="{Binding Phone}" Margin="0,5"/>
+                </StackPanel>
+
+                <!-- Cột bên phải -->
+                <StackPanel Grid.Column="1" Margin="10">
+                    <TextBlock Text="Email" FontWeight="Bold"/>
+                    <TextBox Text="{Binding Email}" Margin="0,5"/>
+
+                    <TextBlock Text="Mật khẩu" FontWeight="Bold"/>
+                    <PasswordBox x:Name="PasswordBox"  Margin="0,5"/>
+
+                    <TextBlock Text="Địa chỉ" FontWeight="Bold"/>
+                    <TextBox Text="{Binding Address}" Margin="0,5"/>
+
+                    <TextBlock Text="Vai trò" FontWeight="Bold"/>
+                    <ComboBox ItemsSource="{Binding Roles}"
+                      SelectedItem="{Binding Role}"
+                      Margin="0,5" Height="35"/>
+
+                    <TextBlock Text="Trạng thái" FontWeight="Bold"/>
+                    <ComboBox ItemsSource="{Binding Statuses}"  SelectedItem="{Binding Status}" Margin="0,5"/>
+                    <TextBlock Text="Mô tả" FontWeight="Bold"/>
+                    <TextBox Text="{Binding Description}" Height="60" TextWrapping="Wrap" AcceptsReturn="True" Margin="0,5"/>
+                </StackPanel>
+            </Grid>
+
+            <!-- Ảnh đại diện + nút -->
+            <StackPanel Grid.Row="2" Margin="0,20" HorizontalAlignment="Center">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
+                    <Image Source="{Binding Photo}" Width="100" Height="100" Margin="0,0,10,0"/>
+                    <Button Content="Chọn ảnh" Command="{Binding SelectImageCommand}" Width="100" VerticalAlignment="Bottom"/>
+                </StackPanel>
+
+                <!-- Nút hành động -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
+                    <Button Content="Lưu" Command="{Binding SaveCommand}" Width="100" Margin="10,0"/>
+                    <Button Content="Hủy" Command="{Binding CancelCommand}" Width="100" Margin="10,0"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</Page>
